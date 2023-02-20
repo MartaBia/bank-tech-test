@@ -22,7 +22,7 @@ class BankFormatter
 
   def process
     user_input = @io.gets.chomp
-    fail 'A number must be inserted' if user_input.empty?
+    raise 'A number must be inserted' if user_input.empty?
 
     case user_input
     when '9'

@@ -27,4 +27,10 @@ RSpec.describe BankFormatter do
 
     @bank_formatter.run
   end
+
+  it 'raises an error when no input is inserted' do
+    expect(@io).to receive(:gets).and_return('')
+
+    expect { @bank_formatter.run }.to raise_error(RuntimeError, 'A number must be inserted')
+  end
 end

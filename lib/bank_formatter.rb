@@ -22,7 +22,13 @@ class BankFormatter
 
   def process
     user_input = @io.gets.chomp
-    @io.puts 'Thank you, goodbye!'
+
+    case user_input
+    when '9'
+      @io.puts 'Thank you, goodbye!'
+    else
+      @io.puts 'Please, select a number between 1 and 3, or number 9 to exit'
+    end
   end
 end
 

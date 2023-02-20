@@ -14,9 +14,16 @@ RSpec.describe BankFormatter do
     expect(@io).to receive(:puts).with('9 - Exit')
   end
 
-  it 'test the class when the user select the number to exit' do
+  it 'tests the case when the user select the number to exit' do
     expect(@io).to receive(:gets).and_return('9')
     expect(@io).to receive(:puts).with('Thank you, goodbye!')
+
+    @bank_formatter.run
+  end
+
+  it 'tests the case when the user select a wrong option' do
+    expect(@io).to receive(:gets).and_return('6')
+    expect(@io).to receive(:puts).with('Please, select a number between 1 and 3, or number 9 to exit')
 
     @bank_formatter.run
   end

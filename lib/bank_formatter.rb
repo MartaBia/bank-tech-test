@@ -28,7 +28,7 @@ class BankFormatter
     when '9'
       @io.puts 'Thank you, goodbye!'
     else
-      @io.puts 'Please, select a number between 1 and 3, or number 9 to exit'
+      @io.puts "Invalid input.\nPlease, select a number between 1 and 3, or number 9 to exit"
     end
   end
 end

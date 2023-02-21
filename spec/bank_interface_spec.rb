@@ -1,10 +1,10 @@
-require 'bank_formatter'
+require 'bank_interface'
 
-RSpec.describe BankFormatter do
+RSpec.describe BankInterface do
   before(:each) do
     @io = double :io
     @bank_account = double :bank_account
-    @bank_formatter = BankFormatter.new(@io, @bank_account)
+    @bank_interface = BankInterface.new(@io, @bank_account)
 
     expect(@io).to receive(:puts).with('Welocme, please select one of the following options:')
     expect(@io).to receive(:puts).with('')
@@ -18,26 +18,26 @@ RSpec.describe BankFormatter do
     expect(@io).to receive(:gets).and_return('9')
     expect(@io).to receive(:puts).with('Thank you, goodbye!')
 
-    @bank_formatter.run
+    @bank_interface.run
   end
 
   it 'tests the case when the user select the wrong number' do
     expect(@io).to receive(:gets).and_return('6')
     expect(@io).to receive(:puts).with("Invalid input.\nPlease, select a number between 1 and 3, or number 9 to exit")
 
-    @bank_formatter.run
+    @bank_interface.run
   end
 
   it 'tests the case when an input other than a number is inserted' do
     expect(@io).to receive(:gets).and_return('banana')
     expect(@io).to receive(:puts).with("Invalid input.\nPlease, select a number between 1 and 3, or number 9 to exit")
 
-    @bank_formatter.run
+    @bank_interface.run
   end
 
   it 'raises an error when no input is inserted' do
     expect(@io).to receive(:gets).and_return('')
 
-    expect { @bank_formatter.run }.to raise_error(RuntimeError, 'A number must be inserted')
+    expect { @bank_interface.run }.to raise_error(RuntimeError, 'A number must be inserted')
   end
 end

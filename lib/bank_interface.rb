@@ -1,4 +1,4 @@
-class BankFormatter
+class BankInterface
   def initialize(io, bank_account)
     @io = io
     @bank_account = bank_account
@@ -34,9 +34,9 @@ class BankFormatter
 end
 
 if __FILE__ == $0
-  bank_formatter = BankFormatter.new(
+  bank_formatter = BankInterface.new(
     Kernel,
-    BankManager.new
+    BankManager.new([])
   )
   bank_formatter.run
 end

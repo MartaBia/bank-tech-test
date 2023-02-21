@@ -18,6 +18,18 @@ class BankAccount
   def get_statement
     transaction_string = "DATE || CREDIT || DEBIT || BALANCE\n"
     transaction_string += "- No transactions available -" if @transactions.empty?
+    balance = 0
+
+    @transactions.each do |transaction|
+      transaction_string += "#{get_formatted_date(transaction.date)} || "
+      if transaction.type == 'deposit'
+        balance += transaction.amount.to_f
+        transaction_string += "#{"%.2f" % transaction.amount.to_f} || || "
+      end
+      transaction_string += "%.2f" % balance.to_s
+    end
+
+    return transaction_string
   end
 
   private

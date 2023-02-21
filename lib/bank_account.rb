@@ -1,3 +1,5 @@
+require_relative './transaction'
+
 class BankAccount
   def initialize(transactions)
     @transactions = transactions
@@ -9,7 +11,7 @@ class BankAccount
     @transactions.push(deposit)
   end
 
-  def withdrawal(amount)
+  def withdraw(amount)
     date = DateTime.now
     withdrawal = Transaction.new(date, 'withdrawal', amount)
     @transactions.push(withdrawal)
@@ -23,8 +25,8 @@ class BankAccount
     @transactions.each do |transaction|
       transaction_string += "#{get_formatted_date(transaction.date)} || "
       if transaction.type == 'deposit'
-        balance += transaction.amount.to_f
-        transaction_string += "#{"%.2f" % transaction.amount.to_f} || || "
+        balance += transaction.amount
+        transaction_string += "#{"%.2f" % transaction.amount} || || "
       end
       transaction_string += "%.2f" % balance.to_s
     end

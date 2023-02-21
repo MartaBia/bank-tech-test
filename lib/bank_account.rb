@@ -16,7 +16,7 @@ class BankAccount
   end
 
   def get_statement
-    return "DATE || CREDIT || DEBIT || BALANCE\n"
+    return "DATE || CREDIT || DEBIT || BALANCE\n- No transactions available -"
   end
 
   private

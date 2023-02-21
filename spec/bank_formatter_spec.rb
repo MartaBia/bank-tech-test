@@ -3,8 +3,8 @@ require 'bank_formatter'
 RSpec.describe BankFormatter do
   before(:each) do
     @io = double :io
-    @bank_manager = double :bank_manager
-    @bank_formatter = BankFormatter.new(@io, @bank_manager)
+    @bank_account = double :bank_account
+    @bank_formatter = BankFormatter.new(@io, @bank_account)
 
     expect(@io).to receive(:puts).with('Welocme, please select one of the following options:')
     expect(@io).to receive(:puts).with('')

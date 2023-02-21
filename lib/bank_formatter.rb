@@ -1,7 +1,7 @@
 class BankFormatter
-  def initialize(io, bank_manager)
+  def initialize(io, bank_account)
     @io = io
-    @bank_manager = bank_manager
+    @bank_account = bank_account
   end
 
   def run

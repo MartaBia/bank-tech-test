@@ -30,4 +30,17 @@ RSpec.describe BankAccount do
     expect(bank_account.instance_variable_get(:@transactions)[0].type).to eq('deposit')
     expect(bank_account.instance_variable_get(:@transactions)[0].amount).to eq(1000)
   end
+
+  it 'creates a withdrawal transaction' do
+    bank_account = BankAccount.new([])
+    fixed_date = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date)
+
+    bank_account.withdraw(1000)
+    
+    expect(bank_account.instance_variable_get(:@transactions).length).to eq(1)
+    expect(bank_account.instance_variable_get(:@transactions)[0].date).to eq(fixed_date)
+    expect(bank_account.instance_variable_get(:@transactions)[0].type).to eq('withdrawal')
+    expect(bank_account.instance_variable_get(:@transactions)[0].amount).to eq(1000)
+  end
 end

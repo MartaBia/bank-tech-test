@@ -16,7 +16,8 @@ class BankAccount
   end
 
   def get_statement
-    return "DATE || CREDIT || DEBIT || BALANCE\n- No transactions available -"
+    transaction_string = "DATE || CREDIT || DEBIT || BALANCE\n"
+    transaction_string += "- No transactions available -" if @transactions.empty?
   end
 
   private

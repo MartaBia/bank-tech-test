@@ -32,16 +32,18 @@ RSpec.describe BankAccount do
   end
 
   it 'creates a withdrawal transaction' do
-    bank_account = BankAccount.new([])
     fixed_date = DateTime.new(2023, 01, 10)
     allow(DateTime).to receive(:now).and_return(fixed_date)
 
-    bank_account.withdraw(1000)
+    transaction = double(:transaction, date: fixed_date , type: 'deposit', amount: 1000)
+    bank_account = BankAccount.new([transaction])
+
+    bank_account.withdraw(500)
     
-    expect(bank_account.instance_variable_get(:@transactions).length).to eq(1)
-    expect(bank_account.instance_variable_get(:@transactions)[0].date).to eq(fixed_date)
-    expect(bank_account.instance_variable_get(:@transactions)[0].type).to eq('withdrawal')
-    expect(bank_account.instance_variable_get(:@transactions)[0].amount).to eq(1000)
+    expect(bank_account.instance_variable_get(:@transactions).length).to eq(2)
+    expect(bank_account.instance_variable_get(:@transactions)[1].date).to eq(fixed_date)
+    expect(bank_account.instance_variable_get(:@transactions)[1].type).to eq('withdrawal')
+    expect(bank_account.instance_variable_get(:@transactions)[1].amount).to eq(500)
   end
 
   it 'returns the statement with 1 deposit transaction' do
@@ -90,9 +92,11 @@ RSpec.describe BankAccount do
     fixed_date = DateTime.new(2023, 01, 10)
     allow(DateTime).to receive(:now).and_return(fixed_date)
 
-    bank_account.withdraw(500)
     
-    expect { bank_account.get_statement }.to raise_error('Operation not permitted')
+    expect { bank_account.withdraw(500) }.to raise_error('Operation not permitted')
+    expect(bank_account.get_statement).to eq (
+      "DATE || CREDIT || DEBIT || BALANCE\n- No transactions available -"
+    )
   end
 
   it 'returns the statement for few operations' do

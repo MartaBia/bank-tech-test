@@ -1,4 +1,5 @@
 require_relative './transaction'
+require 'date'
 
 class BankAccount
   def initialize(transactions)
@@ -12,6 +13,7 @@ class BankAccount
   end
 
   def withdraw(amount)
+    raise 'Operation not permitted' if amount > get_current_balance()
     date = DateTime.now
     withdrawal = Transaction.new(date, 'withdrawal', amount)
     @transactions.push(withdrawal)
@@ -37,7 +39,6 @@ class BankAccount
         balance += transaction.amount
         transaction_string += "#{"%.2f" % transaction.amount} || || "
       else
-        raise 'Operation not permitted' if transaction.amount > balance
         balance -= transaction.amount
         transaction_string += "|| #{"%.2f" % transaction.amount} || "
       end
@@ -51,5 +52,18 @@ class BankAccount
   def get_formatted_date(date)
     formatted_date = date.strftime(("%d/%m/%Y"))
     return formatted_date
+  end
+
+  def get_current_balance
+    balance = 0
+    @transactions.each do |transaction|
+      if transaction.type == 'deposit'
+        balance += transaction.amount
+      else
+        balance -= transaction.amount
+      end
+    end
+
+    return balance
   end
 end

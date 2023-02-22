@@ -65,7 +65,7 @@ RSpec.describe BankAccount do
     bank_account.withdraw(500)
     
     expect(bank_account.get_statement).to eq (
-      "DATE || CREDIT || DEBIT || BALANCE\n10/01/2023 || 1500.00 || || 1500.00\n10/01/2023 || || 500.00 || 1000.00"
+      "DATE || CREDIT || DEBIT || BALANCE\n10/01/2023 || || 500.00 || 1000.00\n10/01/2023 || 1500.00 || || 1500.00"
     )
   end
 end

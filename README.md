@@ -23,6 +23,19 @@ Here is an example on how you can do it from the root directory of the project:
 
 ![irb example](images/irb.png)
 
+To run the tests it will be necessary to install rspec by typing on your console:
+
+```
+gem install bundler
+bundle add rspec
+```
+
+then you can run the tests by typing:
+
+`rspec`
+
+from the root directory of the project
+
 ## My approach to the problem
 
 I started approaching my problem creating some user stories and highlighting the relevant nouns and verbs.
@@ -32,6 +45,8 @@ I started approaching my problem creating some user stories and highlighting the
 I then created a diagram with the classes and their method.
 
 ![Diagram](images/diagram.png)
+
+As you can see from the diagram I thought to create a BankAccount class that is initialised with an empty array, it creates Transaction objects that are then stored in the array. Once the bank statement is requested, BankAccount iterates through the array of Transaction objects to access the date, the amount, the type and from it calculates a balance. The statement is then returned in reverse chronological order.
 
 ## Work in progress
 

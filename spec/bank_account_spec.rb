@@ -84,4 +84,14 @@ RSpec.describe BankAccount do
       "DATE || CREDIT || DEBIT || BALANCE\n13/01/2023 || || 500.00 || 1000.00\n10/01/2023 || 1500.00 || || 1500.00"
     )
   end
+
+  it 'returns and error message if the withdrawal is higher than the current balance' do
+    bank_account = BankAccount.new([])
+    fixed_date = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date)
+
+    bank_account.withdraw(500)
+    
+    expect { bank_account.get_statement }.to raise_error('Operation not permitted')
+  end
 end

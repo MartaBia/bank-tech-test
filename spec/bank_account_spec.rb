@@ -55,4 +55,17 @@ RSpec.describe BankAccount do
       "DATE || CREDIT || DEBIT || BALANCE\n10/01/2023 || 1000.00 || || 1000.00"
     )
   end
+
+  it 'returns the statement with 2 transaction' do
+    bank_account = BankAccount.new([])
+    fixed_date = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date)
+
+    bank_account.deposit(1500)
+    bank_account.withdraw(500)
+    
+    expect(bank_account.get_statement).to eq (
+      "DATE || CREDIT || DEBIT || BALANCE\n10/01/2023 || 1500.00 || || 1500.00\n10/01/2023 || || 500.00 || 1000.00"
+    )
+  end
 end

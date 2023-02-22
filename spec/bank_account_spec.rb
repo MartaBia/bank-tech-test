@@ -71,13 +71,13 @@ RSpec.describe BankAccount do
 
   it 'returns the statement with 2 transaction done in 2 different dates' do
     bank_account = BankAccount.new([])
-    fixed_date1 = DateTime.new(2023, 01, 10)
-    allow(DateTime).to receive(:now).and_return(fixed_date1)
+    fixed_date_1 = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date_1)
 
     bank_account.deposit(1500)
 
-    fixed_date2 = DateTime.new(2023, 01, 13)
-    allow(DateTime).to receive(:now).and_return(fixed_date2)
+    fixed_date_2 = DateTime.new(2023, 01, 13)
+    allow(DateTime).to receive(:now).and_return(fixed_date_2)
     bank_account.withdraw(500)
     
     expect(bank_account.get_statement).to eq (
@@ -93,5 +93,25 @@ RSpec.describe BankAccount do
     bank_account.withdraw(500)
     
     expect { bank_account.get_statement }.to raise_error('Operation not permitted')
+  end
+
+  it 'returns the statement for few operations' do
+    bank_account = BankAccount.new([])
+
+    fixed_date_1 = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date_1)
+    bank_account.deposit(1000)
+
+    fixed_date_2 = DateTime.new(2023, 01, 13)
+    allow(DateTime).to receive(:now).and_return(fixed_date_2)
+    bank_account.deposit(1000)
+
+    fixed_date_3 = DateTime.new(2023, 01, 15)
+    allow(DateTime).to receive(:now).and_return(fixed_date_3)
+    bank_account.withdraw(500)
+    
+    expect(bank_account.get_statement).to eq (
+      "DATE || CREDIT || DEBIT || BALANCE\n15/01/2023 || || 500.00 || 1500.00\n13/01/2023 || 1000.00 || || 2000.00\n10/01/2023 || 1000.00 || || 1000.00"
+    )
   end
 end

@@ -46,7 +46,9 @@ I then created a diagram with the classes and their method.
 
 ![Diagram](images/diagram.png)
 
-As you can see from the diagram I thought to create a BankAccount class that is initialised with an empty array, it creates Transaction objects that are then stored in the array. Once the bank statement is requested, BankAccount iterates through the array of Transaction objects to access the date, the amount, the type and from it calculates a balance. The statement is then returned in reverse chronological order.
+## Code structure
+
+As you can see from the diagram above, I thought to create a BankAccount class that is initialised with an empty array, it creates Transaction objects that are then stored in the array. Once the bank statement is requested, BankAccount iterates through the array of Transaction objects to access the date, the amount, the type and from it calculates a balance. The statement is then returned with transactions in reverse chronological order.
 
 ## Work in progress
 

@@ -8,7 +8,7 @@ RSpec.describe BankAccount do
     )
   end
 
-  it 'returns the statement when an initial transaction passed' do
+  it 'returns the statement when an initial transaction is passed' do
     fixed_date = DateTime.new(2023, 01, 10)
 
     transaction = double(:transaction, date: fixed_date , type: 'deposit', amount: 1000)
@@ -42,5 +42,17 @@ RSpec.describe BankAccount do
     expect(bank_account.instance_variable_get(:@transactions)[0].date).to eq(fixed_date)
     expect(bank_account.instance_variable_get(:@transactions)[0].type).to eq('withdrawal')
     expect(bank_account.instance_variable_get(:@transactions)[0].amount).to eq(1000)
+  end
+
+  it 'returns the statement with 1 deposit transaction' do
+    bank_account = BankAccount.new([])
+    fixed_date = DateTime.new(2023, 01, 10)
+    allow(DateTime).to receive(:now).and_return(fixed_date)
+
+    bank_account.deposit(1000)
+    
+    expect(bank_account.get_statement).to eq (
+      "DATE || CREDIT || DEBIT || BALANCE\n10/01/2023 || 1000.00 || || 1000.00"
+    )
   end
 end

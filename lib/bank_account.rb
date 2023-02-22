@@ -18,7 +18,16 @@ class BankAccount
   end
 
   def get_statement
-    statement_string = ""
+    statement_string = "DATE || CREDIT || DEBIT || BALANCE" + get_transactions_string()
+    statement_string += "\n- No transactions available -" if @transactions.empty?
+
+    return statement_string
+  end
+
+  private
+
+  def get_transactions_string
+    all_transactions_string = ""
     balance = 0
 
     @transactions.each do |transaction|
@@ -32,16 +41,11 @@ class BankAccount
         transaction_string += "|| #{"%.2f" % transaction.amount} || "
       end
       transaction_string += "#{"%.2f" % balance.to_s}"
-      statement_string = transaction_string + statement_string 
+      all_transactions_string = transaction_string + all_transactions_string 
     end
 
-    statement_string = "DATE || CREDIT || DEBIT || BALANCE" + statement_string
-    statement_string += "\n- No transactions available -" if @transactions.empty?
-
-    return statement_string
+    return all_transactions_string
   end
-
-  private
 
   def get_formatted_date(date)
     formatted_date = date.strftime(("%d/%m/%Y"))

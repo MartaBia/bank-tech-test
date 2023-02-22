@@ -17,30 +17,6 @@ class BankAccount
     @transactions.push(withdrawal)
   end
 
-  # def get_statement
-  #   statement_string = ""
-  #   balance = 0
-
-  #   @transactions.each do |transaction|
-  #     transaction_string = ""
-  #     transaction_string += "\n#{get_formatted_date(transaction.date)} || "
-  #     if transaction.type == 'deposit'
-  #       balance += transaction.amount
-  #       transaction_string += "#{"%.2f" % transaction.amount} || || "
-  #     else
-  #       balance -= transaction.amount
-  #       transaction_string += "|| #{"%.2f" % transaction.amount} || "
-  #     end
-  #     transaction_string += "#{"%.2f" % balance.to_s}"
-  #     statement_string = transaction_string + statement_string 
-  #   end
-
-  #   statement_string = "DATE || CREDIT || DEBIT || BALANCE" + statement_string
-  #   statement_string += "\n- No transactions available -" if @transactions.empty?
-
-  #   return statement_string
-  # end
-
   def get_statement
     statement_string = "DATE || CREDIT || DEBIT || BALANCE" + get_transactions_string()
     statement_string += "\n- No transactions available -" if @transactions.empty?

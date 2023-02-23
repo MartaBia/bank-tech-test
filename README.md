@@ -7,6 +7,14 @@ It also allow the users to see their account statments (Transaction date, transa
 
 It is possible to interact with the probram via Ruby's shell, IRB.
 
+## Technologies used
+
+| Thecnology               | Name               |     |
+| ------------------------ | ------------------ | --- |
+| **Programming Language** | Ruby               |  <code><img height="30" src="https://user-images.githubusercontent.com/25181517/192603745-7d34df9e-7756-4756-a539-6a61badf7a80.png" alt="Ruby" title="Ruby" /></code>   |
+| **Test**                 | RSpec              | <code><img height="40" src="https://user-images.githubusercontent.com/25181517/192603750-4142ae75-10fa-4b61-a773-8b2052834357.png" alt="RubyGems" title="RubyGems" /></code> |
+| **Text Editor**          | Visual Studio Code |   <code><img height="30" src="https://user-images.githubusercontent.com/25181517/192108891-d86b6220-e232-423a-bf5f-90903e6887c3.png" alt="Visual Studio Code" title="Visual Studio Code" /></code>  |
+
 ## How to run the program
 
 Before running this program make sure you have Ruby installed on your machine by typing in your terminal:

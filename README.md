@@ -31,6 +31,8 @@ Here is an example on how you can do it from the root directory of the project:
 
 ![irb example](images/irb.png)
 
+## Testing
+
 To run the tests it will be necessary to install rspec by typing on your console:
 
 ```
@@ -42,7 +44,9 @@ then you can run the tests by typing:
 
 `rspec`
 
-from the root directory of the project
+from the root directory of the project.
+
+![tests outcome](images/tests.png)
 
 ## My approach to the problem
 

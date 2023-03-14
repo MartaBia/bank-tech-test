@@ -31,6 +31,34 @@ Here is an example on how you can do it from the root directory of the project:
 
 ![irb example](images/irb.png)
 
+### Example usage
+
+``` ruby
+require_relative 'lib/bank_account.rb'
+
+bank_account = BankAccount.new([])
+
+puts bank_account.get_statement
+
+# Output:
+
+'DATE || CREDIT || DEBIT || BALANCE'
+'- No transactions available -'
+
+bank_account.deposit(1000)
+bank_account.deposit(2000)
+bank_account.withdraw(500)
+
+puts bank_account.get_statement
+
+# Output:
+
+'DATE || CREDIT || DEBIT || BALANCE'
+'14/03/2023 || || 500.00 || 2500.00'
+'14/03/2023 || 2000.00 || || 3000.00'
+'14/03/2023 || 1000.00 || || 1000.00'
+```
+
 ## Testing
 
 To run the tests it will be necessary to install rspec by typing on your console:

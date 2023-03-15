@@ -29,7 +29,7 @@ Once you have done it, you can interact with the program via IRB by simply typin
 
 Here is an example on how you can do it from the root directory of the project:
 
-<img height="200" src='images/irb.png'/>
+<img height="300" src='images/irb.png'/>
 
 <!-- ![irb example](images/irb.png) -->
 

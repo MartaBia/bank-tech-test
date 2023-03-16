@@ -3,13 +3,13 @@
 ## Specification
 
 This is a simple bank program, created with Ruby, that allows the users to do deposits and withdrawals.
-It also allow the users to see their account statments (Transaction date, transaction amount and total balance) with transactions in reverse chronological order.
+It also allows the users to see their account statements (Transaction date, transaction amount and total balance) with transactions in reverse chronological order.
 
-It is possible to interact with the probram via Ruby's shell, IRB.
+It is possible to interact with the program via Ruby's shell, IRB.
 
 ## Technologies used
 
-| Thecnology               | Name               |     |
+| Technology               | Name               |     |
 | ------------------------ | ------------------ | --- |
 | **Programming Language** | Ruby               |  <code><img height="30" src="https://user-images.githubusercontent.com/25181517/192603745-7d34df9e-7756-4756-a539-6a61badf7a80.png" alt="Ruby" title="Ruby" /></code>   |
 | **Test**                 | RSpec              | <code><img height="40" src="https://user-images.githubusercontent.com/25181517/192603750-4142ae75-10fa-4b61-a773-8b2052834357.png" alt="RubyGems" title="RubyGems" /></code> |
@@ -84,7 +84,7 @@ I started approaching my problem creating some user stories and highlighting the
 
 ![User stories](images/user_stories.png)
 
-I then created a diagram with the classes and their method.
+I then created a diagram with the classes and their methods.
 
 ![Diagram](images/diagram.png)
 
